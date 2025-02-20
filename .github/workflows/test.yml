@@ -1,13 +1,11 @@
-name: Simple Test Workflow
+name: Reusable Workflow
 
-on: push
+on:
+  workflow_call:  # 他のリポジトリから呼び出し可能にする
 
 jobs:
-  test:
+  say-hello:
     runs-on: ubuntu-latest
     steps:
-      - name: 簡単なメッセージを表示
-        run: |
-          echo "Hello, GitHub Actions!"
-          echo ${{ secrets.TEST_ABC }}
-          echo ${{ secrets.TEST_TEST }}
+      - name: 別リポジトリから呼び出された！
+        run: echo "Hello from repo-a!"
