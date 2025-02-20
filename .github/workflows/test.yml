@@ -2,10 +2,15 @@ name: Reusable Workflow
 
 on:
   workflow_call:  # 他のリポジトリから呼び出し可能にする
+    secrets:
+      TEST_ABC:
+        required: true
 
 jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
       - name: 別リポジトリから呼び出された！
-        run: echo "Hello from repo-a!"
+        run: |
+          echo "Hello from repo-a!"
+          echo ${{ secrets.TEST_ABC }}
