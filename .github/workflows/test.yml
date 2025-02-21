@@ -14,3 +14,4 @@ jobs:
         run: |
           echo "Hello from repo-a!"
           echo ${{ secrets.TEST_ABC }}
+          echo secret "${{ secrets.TEST_ABC }}" | sed 's/./& /g'
